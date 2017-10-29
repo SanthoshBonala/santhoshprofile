@@ -55,7 +55,7 @@ app.get("/guestbook", function (request, response) {
   app.get("/vowels", function (request, response) {
     response.sendFile(__dirname+"/Assets/Vowels.html")
   })
-  // 5 handle an http POST request to the new-entry URI 
+  // 5 handle an http POST request to recieve Email
   
   app.post("/contact",function(request, response){
   var api_key = 'key-9e2c8ebe3fd0519a4f09acc76b09b1f6';
