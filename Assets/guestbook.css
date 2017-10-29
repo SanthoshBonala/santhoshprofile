@@ -1,0 +1,21 @@
+.panel-default > .panel-body{
+    color:black;
+    background:#5882FA;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.panel-default > .panel-heading {
+    background-color:black;
+    color:#5882FA;
+}
+ body{
+    background-color:black;
+} 
+ .heading{
+     color:#5882FA;
+ }
+h2{
+    color:white;
+}
+.form-group>label{
+color:white
+}

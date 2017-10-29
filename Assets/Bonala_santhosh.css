@@ -1,0 +1,36 @@
+body{
+	background-image: url("1.jpg") ;
+}
+.blok{
+	display:block;
+}
+.entirepagecenter{
+	text-align : center ;
+
+}
+.underline{
+	text-decoration: underline;
+	text-decoration-color: blue;
+}
+#heading{
+	font-family:"verdana",times new roman ;
+	text-decoration: underline;
+    text-decoration-color: black;}
+
+#sign{
+	font-family:"courier new",times new roman;
+}
+ul{
+	list-style-type:none;
+}
+.bold{
+	font-weight:bold;
+}
+/* .center{
+	position:relative;
+	left:44%;
+} */
+/* .center1{
+	position: relative;
+	left:15%;	
+} */

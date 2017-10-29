@@ -1,0 +1,33 @@
+{
+  "name": "a03",
+  "version": "1.0.0",
+  "description": "guestbook app",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/SanthoshBonala/a03.git"
+  },
+  "dependencies": {
+    "express": "latest",
+    "morgan": "latest",
+    "body-parser": "latest",
+    "ejs": "latest",
+    "consolidate":"latest",
+    "express3-handlebars":"latest",
+    "mailgun-js":"latest",
+},
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "santhosh Bonala",
+  "license": "Apache-2.0",
+  "homepage": "https://bitbucket.org/SanthoshBonala/a03#readme"
+}
