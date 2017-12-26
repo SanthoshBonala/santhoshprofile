@@ -21,7 +21,7 @@
     "ejs": "latest",
     "consolidate":"latest",
     "express3-handlebars":"latest",
-    "mailgun-js":"latest",
+    "mailgun-js":"latest"
 },
   "keywords": [
     "node",

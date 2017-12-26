@@ -30,9 +30,10 @@ app.set('view engine', 'ejs');
 // app.set("view engine", "html") // specify our view engine
 
 // 2 create an array to manage our entries
-var entries = []
+var entries = [],a=0//,data={}
 app.locals.entries = entries // now entries can be accessed in .ejs files
-
+app.locals.a = a
+//app.locals.data=data
 // 3 set up an http request logger to log every request automagically
 app.use(logger("dev"))     // app.use() establishes middleware functions
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -50,7 +51,9 @@ app.get("/guestbook", function (request, response) {
     response.sendFile(__dirname+"/Assets/About.html")
   })
   app.get("/contact", function (request, response) {
-    response.sendFile(__dirname+"/Assets/Contact.html")
+    response.render("contact",{
+      show: false
+    })
   })
   app.get("/vowels", function (request, response) {
     response.sendFile(__dirname+"/Assets/Vowels.html")
@@ -70,10 +73,23 @@ app.get("/guestbook", function (request, response) {
   };
    
   mailgun.messages().send(data, function (error, body) {
-    console.log(body);
+    //console.log(body);
     if(!error){
-      response.sendFile(__dirname+"/Assets/Contact.html")
-    }else{response.send("error")}
+      app.locals.a=1
+      app.locals
+      console.log(app.locals.a)
+      response.render("contact",{
+        show: true,
+        message: "Mail sent",
+        messagebody: "success"
+      })
+    }else{
+      response.render("contact", {
+        show: true,
+        message: "Mail Not sent",
+        messagebody: "Failure! Please try again"
+      })
+          }
   })
   
   })
@@ -89,7 +105,7 @@ app.post("/new-entry", function (request, response) {
       published: new Date()
     })
    // console.log('data here:'+request.body.title);
-   console.log(entries)
+   //console.log(entries)
     response.redirect("/guestbook")  // where to go next? Let's go to the home page :)
    })
 // if we get a 404 status, render our 404.ejs view
