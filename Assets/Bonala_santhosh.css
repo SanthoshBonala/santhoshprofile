@@ -1,5 +1,6 @@
 body{
-	background-image: url("./background.jpg") ;
+	background-image: url("./background.jpg");
+	background-repeat: no-repeat;
 }
 .blok{
 	display:block;
@@ -34,3 +35,8 @@ ul{
 	position: relative;
 	left:15%;	
 } */
+@media (max-width: 576px) and (max-height : 576px){
+	#heading{
+      font-size: 1em
+	}
+}
