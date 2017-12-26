@@ -3,7 +3,7 @@ function vc(){
     var lastna=document.getElementById("Lastname").value.toLowerCase();
    var k= vfirst(na);
    var l= vlast(lastna);
-    document.getElementById("comment").innerHTML="vowel count in first name:"+k+"vowel count in last name:"+l+"/n"
+    document.getElementById("comment").innerHTML="vowel count in first name:"+k+"vowel count in last name:"+l+"<br>"
     +"Total number of vowels in first and lastname:"+(k+l);
     document.getElementById("reset").innerHTML="Count More";
     $("strong").html("Result are displayed below").css("color","black");
