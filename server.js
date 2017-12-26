@@ -51,7 +51,7 @@ app.get("/guestbook", function (request, response) {
     response.sendFile(__dirname+"/Assets/About.html")
   })
   app.get("/contact", function (request, response) {
-    response.render("contact",{
+    response.render("Contact",{
       show: false
     })
   })
@@ -78,13 +78,13 @@ app.get("/guestbook", function (request, response) {
       app.locals.a=1
       app.locals
       console.log(app.locals.a)
-      response.render("contact",{
+      response.render("Contact",{
         show: true,
         message: "Mail sent",
         messagebody: "success"
       })
     }else{
-      response.render("contact", {
+      response.render("Contact", {
         show: true,
         message: "Mail Not sent",
         messagebody: "Failure! Please try again"
