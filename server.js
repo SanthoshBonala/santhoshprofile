@@ -4,6 +4,7 @@ var logger = require("morgan")
 var bodyParser = require("body-parser") // simplifies access to request body
 var app = express()  // make express app
 var http = require('http').Server(app)  // inject app into the server
+const { Client } = require('pg');
 
 // 1 set up the view engine
 // 2 manage our entries
@@ -106,7 +107,17 @@ app.post("/new-entry", function (request, response) {
       content: request.body.body,
       published: new Date()
     })
-   // console.log('data here:'+request.body.title);
+//postgres://kyoqcrbynjipef:d6d3e16a6e428c319c390d95263995053e4035929d404211c02d7b86fc494842@ec2-107-22-174-187.compute-1.amazonaws.com:5432/d2t63uqip9g3gg
+  const client = new Client({
+    connectionString: 'postgres://kyoqcrbynjipef:d6d3e16a6e428c319c390d95263995053e4035929d404211c02d7b86fc494842@ec2-107-22-174-187.compute-1.amazonaws.com:5432/d2t63uqip9g3gg'
+   
+  });
+  client.connect();
+  client.query('INSERT INTO test_table values(request.body.title,request.body.body,new Date())', function (err, result) {
+    if (err) { console.error(err); response.send("Error " + err); }
+  });
+
+// console.log('data here:'+request.body.title);
    //console.log(entries)
     response.redirect("/guestbook")  // where to go next? Let's go to the home page :)
    })

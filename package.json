@@ -15,14 +15,15 @@
     "url": "https://bitbucket.org/SanthoshBonala/a03.git"
   },
   "dependencies": {
-    "express": "latest",
-    "morgan": "latest",
     "body-parser": "latest",
+    "consolidate": "latest",
     "ejs": "latest",
-    "consolidate":"latest",
-    "express3-handlebars":"latest",
-    "mailgun-js":"latest"
-},
+    "express": "latest",
+    "express3-handlebars": "latest",
+    "mailgun-js": "latest",
+    "morgan": "latest",
+    "pg": "^7.4.0"
+  },
   "keywords": [
     "node",
     "express"
