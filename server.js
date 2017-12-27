@@ -40,7 +40,18 @@ app.use(logger("dev"))     // app.use() establishes middleware functions
 app.use(bodyParser.urlencoded({ extended: false }))
 // 4 handle http GET requests (default & /new-entry)
 app.get("/guestbook", function (request, response) {
-    response.render("index")
+    
+      const client = new Client({
+    connectionString: 'postgres://kyoqcrbynjipef:d6d3e16a6e428c319c390d95263995053e4035929d404211c02d7b86fc494842@ec2-107-22-174-187.compute-1.amazonaws.com:5432/d2t63uqip9g3gg'
+
+  });
+  client.connect();
+  client.query('select * from test_table', function (err, result) {
+    if (err) { console.error(err); response.send("Error " + err); }else{
+      console.log(result)
+    }
+  });
+  response.render("index")
   })
   app.get("/new-entry", function (request, response) {
     response.render("new-entry")
