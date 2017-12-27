@@ -108,14 +108,14 @@ app.post("/new-entry", function (request, response) {
       published: new Date()
     })
 //postgres://kyoqcrbynjipef:d6d3e16a6e428c319c390d95263995053e4035929d404211c02d7b86fc494842@ec2-107-22-174-187.compute-1.amazonaws.com:5432/d2t63uqip9g3gg
-  // const client = new Client({
-  //   connectionString: 'postgres://kyoqcrbynjipef:d6d3e16a6e428c319c390d95263995053e4035929d404211c02d7b86fc494842@ec2-107-22-174-187.compute-1.amazonaws.com:5432/d2t63uqip9g3gg'
+  const client = new Client({
+    connectionString: 'postgres://kyoqcrbynjipef:d6d3e16a6e428c319c390d95263995053e4035929d404211c02d7b86fc494842@ec2-107-22-174-187.compute-1.amazonaws.com:5432/d2t63uqip9g3gg'
    
-  // });
-  // client.connect();
-  // client.query('INSERT INTO test_table(title,body,published) values('+request.body.title+','+request.body.body +','+new Date()+')', function (err, result) {
-  //   if (err) { console.error(err); response.send("Error " + err); }
-  // });
+  });
+  client.connect();
+  client.query('INSERT INTO test_table(title,content,published) values($1,$2,$3)',[request.body.title,request.body.body ,new Date()], function (err, result) {
+    if (err) { console.error(err); response.send("Error " + err); }
+  });
     response.redirect("/guestbook")  // where to go next? Let's go to the home page :)
    })
 // if we get a 404 status, render our 404.ejs view
