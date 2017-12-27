@@ -113,7 +113,7 @@ app.post("/new-entry", function (request, response) {
    
   });
   client.connect();
-  client.query('INSERT INTO test_table values(request.body.title,request.body.body,new Date())', function (err, result) {
+  client.query('INSERT INTO test_table(title,body,published) values('+request.body.title+','+request.body.body +','+new Date()+')', function (err, result) {
     if (err) { console.error(err); response.send("Error " + err); }
   });
 
