@@ -32,7 +32,7 @@ app.set('view engine', 'ejs');
 
 // 2 create an array to manage our entries
 var entries = [],a=0//,data={}
-app.locals.entries = entries // now entries can be accessed in .ejs files
+ // now entries can be accessed in .ejs files
 app.locals.a = a
 //app.locals.data=data
 // 3 set up an http request logger to log every request automagically
@@ -48,10 +48,12 @@ app.get("/guestbook", function (request, response) {
   client.connect();
   client.query('select * from test_table', function (err, result) {
     if (err) { console.error(err); response.send("Error " + err); }else{
-      console.log(result)
+      response.render("index",{
+        entries: result.rows
+      })
     }
   });
-  response.render("index")
+  
   })
   app.get("/new-entry", function (request, response) {
     response.render("new-entry")
