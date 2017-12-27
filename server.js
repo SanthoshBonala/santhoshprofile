@@ -52,7 +52,9 @@ app.get("/guestbook", function (request, response) {
   })
   app.get("/contact", function (request, response) {
     response.render("Contact",{
-      show: false
+      show: false,
+      message: null,
+      messagebody: null
     })
   })
   app.get("/vowels", function (request, response) {
