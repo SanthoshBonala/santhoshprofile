@@ -39,11 +39,7 @@ app.get("/guestbook", function (request, response) {
     response.sendFile(__dirname+"/Assets/About.html")
   })
   app.get("/contact", function (request, response) {
-    response.render("Contact",{
-      show: false,
-      message: null,
-      messagebody: null
-    })
+    response.render("Contact")
   })
   app.get("/vowels", function (request, response) {
     response.sendFile(__dirname+"/Assets/Vowels.html")
@@ -56,19 +52,19 @@ app.get("/guestbook", function (request, response) {
   var data = {
     from: 'Vowels App User <postmaster@sandboxd2b428a282d742799ffa23ce72aed1cc.mailgun.org>',
     to: 'santhubonala@gmail.com',
-    subject:request.body.Name +"Sent you a message",
+    subject:request.body.Name +" Sent you a message",
     html: "<b style='color:blue'>Name: </b>"+request.body.Name+"<br>"+"<b style='color:green'> Comment: </b>"+request.body.Question+"<br>reply him :"+"<b style='color:red'>"+request.body.Email+"</b>"
   };
    
   mailgun.messages().send(data, function (error, body) {
     if(!error){
-      response.render("Contact",{
+      response.send({
         show: true,
         message: "Mail sent",
         messagebody: "success"
       })
     }else{
-      response.render("Contact", {
+      response.send( {
         show: true,
         message: "Mail Not sent",
         messagebody: "Failure! Please try again"
