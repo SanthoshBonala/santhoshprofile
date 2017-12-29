@@ -19,3 +19,8 @@ h2{
 .form-group>label{
 color:white
 }
+@media only screen and (max-width: 500px){
+    .write{
+        content: "Write"
+    }
+}
