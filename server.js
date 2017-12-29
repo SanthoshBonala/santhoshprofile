@@ -22,6 +22,7 @@ app.get("/guestbook", function (request, response) {
   client.connect();
   client.query('select * from test_table order by published', function (err, result) {
     if (err) { console.error(err); response.send("Error " + err); }else{
+         
       response.render("index",{
         entries: result.rows
       })
