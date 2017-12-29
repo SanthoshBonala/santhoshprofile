@@ -14,6 +14,9 @@
 <script>
   $(document).ready(function(){
     $('#comment').css({ "display": "none" });
+    $('#reset').click(() => {
+       $("strong").html("Count More").css("color","white");
+    });
     
     $('#button').click(function(){
     
