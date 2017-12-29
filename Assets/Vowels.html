@@ -7,7 +7,20 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="calc.js"></script>
 </head>
+<script>
+  $(document).ready(function(){
+    $('#comment').css({ "display": "none" });
+    $('#button').click(function(){
+      $('#comment').css({"display":"block"});
+      vc();
+    })
+  })
+
+</script>
 <body id="body">
     <div class="container-fluid" >
   <div>
@@ -64,23 +77,21 @@
      
         <div class="form-group">        
           <div class="col-sm-offset-4 col-xs-offset-5">
-             <button type="submit" id="button" class="btn btn-default btn-sm" onclick="vc()">Get vowel count</button>
+             <button type="button" id="button" class="btn btn-default btn-sm">Get vowel count</button>
              <button type="reset" id="reset" class="btn btn-default btn-sm" >reset</button>
           </div>
        </div>  
        <div class="form-group">
         <label for="vowels" class="control-label col-sm-2  ">Vowels:</label>
-        <div class="col-sm-6">
-          <div class="alert alert-success" id="comment">
-          </div></div>
+        <div class=" col-sm-6 alert alert-success " id="comment">
+        </div>
       </div> 
          
       </form>
   </div>
 </div>
 </div>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="calc.js"></script>
+
+
 </body>
 </html>
