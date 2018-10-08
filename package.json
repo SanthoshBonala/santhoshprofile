@@ -17,6 +17,7 @@
   "dependencies": {
     "body-parser": "latest",
     "consolidate": "latest",
+    "cors": "^2.8.4",
     "ejs": "latest",
     "express": "latest",
     "express3-handlebars": "latest",
