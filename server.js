@@ -8,7 +8,7 @@ const { Client } = require('pg');
 
 app.use(express.static(__dirname + '/Assets'))
 
-app.set('views', __dirname + '/Assets');
+app.set('views', __dirname + '/views');
 
 app.set('view engine', 'ejs');
 app.use(logger("dev"))     // app.use() establishes middleware functions
@@ -34,16 +34,16 @@ app.get("/guestbook", function (request, response) {
     response.render("new-entry")
   })
   app.get("/", function (request, response) {
-    response.sendFile(__dirname+"/Assets/About.html")
+    response.sendFile(__dirname+"/views/About.html")
   })
   app.get("/about", function (request, response) {
-    response.sendFile(__dirname+"/Assets/About.html")
+    response.sendFile(__dirname+"/views/About.html")
   })
   app.get("/contact", function (request, response) {
     response.render("Contact")
   })
   app.get("/vowels", function (request, response) {
-    response.sendFile(__dirname+"/Assets/Vowels.html")
+    response.sendFile(__dirname+"/views/Vowels.html")
   })
   app.post("/contact",function(request, response){
   var api_key = 'key-9e2c8ebe3fd0519a4f09acc76b09b1f6';
