@@ -1,10 +1,14 @@
-var path = require("path")
-var express = require("express")
-var logger = require("morgan")
-var bodyParser = require("body-parser") // simplifies access to request body
-var app = express()  // make express app
-var http = require('http').Server(app)  // inject app into the server
+let path = require("path")
+let express = require("express")
+let logger = require("morgan")
+let bodyParser = require("body-parser") // simplifies access to request body
+let app = express()  // make express app
+let http = require('http').Server(app)  // inject app into the server
 const { Client } = require('pg');
+
+let cors = require('cors')
+
+app.use(cors())
 
 app.use(express.static(__dirname + '/Assets'))
 
