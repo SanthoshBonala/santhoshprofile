@@ -1,98 +1,99 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Vowelcount</title>
-<link  rel="stylesheet"
-      href="css/Bonala_santhosh.css">
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
+  <title>Vowelcount</title>
+  <link rel="stylesheet" href="css/Bonala_santhosh.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <script>
- $(document).ready(function () {
-     $('#alertname').css({"display":"none"});
-   $('#alertquestion').css({ "display": "none" });
-   $("#alertemail").css({ "display": "none" });
-   $('#alertemaildismiss').click(function(){
-     $("#alertemail").css({ "display": "none" });
-   });
+  $(document).ready(function () {
+    $('#alertname').css({ "display": "none" });
+    $('#alertquestion').css({ "display": "none" });
+    $("#alertemail").css({ "display": "none" });
+    $('#alertemaildismiss').click(function () {
+      $("#alertemail").css({ "display": "none" });
+    });
     $('#alertquestiondismiss').click(function () {
-     $("#alertquestion").css({ "display": "none" });
-   });
+      $("#alertquestion").css({ "display": "none" });
+    });
     $('#alertnamedismiss').click(function () {
-     $("#alertname").css({ "display": "none" });
-   });
- $('#button').click(function () {
-        var check = true;
-       var data = $('form').serialize();
+      $("#alertname").css({ "display": "none" });
+    });
+    $('#button').click(function () {
+      var check = true;
+      var data = $('form').serialize();
       var name = $('#Name').val();
       var question = $('#Question').val();
-      var email = $('#Email').val();   
-       var   emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-   if (!emailReg.test(email) || email == '') {
-     console.log("----------")
-          $("#alertemail").css({ "display": "block" });
-          check = false;
-        }else{
-  
-   
-     $("#alertemail").css({ "display": "none" });
-        }
-        if(name.trim().length === 0){
-            $("#alertname").css({ "display": "block" });
-            check= false;
-        }else{
-              $('#alertname').css({ "display": "none" });
-        } if(question.trim().length === 0){
-               $("#alertquestion").css({ "display": "block" });
-               check=false;
-        }else{
-              $('#alertquestion').css({ "display": "none" });
-        }
-        if(check){     
+      var email = $('#Email').val();
+      var emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      if (!emailReg.test(email) || email == '') {
+        console.log("----------")
+        $("#alertemail").css({ "display": "block" });
+        check = false;
+      } else {
 
-       $.post(
-         "https://santhoshprofile.herokuapp.com/Contact",
-         data, function (res) {
 
-           if (res.show) {
-             $('#modalbody').html(res.messagebody);
-             $('#modaltitle').html(res.message);
-             $('#myModal').modal('show');
-             document.getElementById('form').reset();
-           } else {
-             $('#myModal').modal('hide');
-           }
+        $("#alertemail").css({ "display": "none" });
+      }
+      if (name.trim().length === 0) {
+        $("#alertname").css({ "display": "block" });
+        check = false;
+      } else {
+        $('#alertname').css({ "display": "none" });
+      } if (question.trim().length === 0) {
+        $("#alertquestion").css({ "display": "block" });
+        check = false;
+      } else {
+        $('#alertquestion').css({ "display": "none" });
+      }
+      if (check) {
 
-         })
-           }
-     })
-  
- 
- })
+        $.post(
+          "https://santhoshprofile.herokuapp.com/Contact",
+          data, function (res) {
+
+            if (res.show) {
+              $('#modalbody').html(res.messagebody);
+              $('#modaltitle').html(res.message);
+              $('#myModal').modal('show');
+              document.getElementById('form').reset();
+            } else {
+              $('#myModal').modal('hide');
+            }
+
+          })
+      }
+    })
+
+
+  })
 </script>
+
 <body id="body">
   <div class="container-fluid">
-        <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="modaltitle">           
-                </h4>
-              </div>
-              <div class="modal-body">
-                <p id="modalbody">             
-                </p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" id="modaltitle">
+            </h4>
+          </div>
+          <div class="modal-body">
+            <p id="modalbody">
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
+      </div>
+    </div>
 
     <div>
       <nav class="navbar navbar-inverse">
@@ -124,62 +125,64 @@
         </div>
       </nav>
     </div>
-            <div class="col-sm-12">
-                <p><strong style="color:white">Need Help!
-                  </strong></p>
-              </div>
+    <div class="col-sm-12">
+      <p><strong style="color:white">Need Help!
+        </strong></p>
+    </div>
 
-<div  class="col-sm-8 col-sm-offset-2" >
-     <form class="form-horizontal" role="form" id="form" method="post">
-              <div class="form-group">
-                <label class="control-label col-sm-2" for="Name">Enter Name:</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" id="Name" placeholder="Enter your  Name" name="Name" required>
-                </div>
-              </div>
-              <div class="alert alert-danger  fade in" id="alertname">
-                <a href="#" class="close " id="alertnamedismiss" class="close">×</a>
-                <strong>Name Field cannot be empty</strong>
-              </div>
-              <div class="form-group">
-                <label class="control-label col-sm-2" for="Email">Enter Email:</label>
-                <div class="col-sm-6">          
-                  <input type="email" class="form-control" id="Email" placeholder="Enter your Email" name="Email" required>
-                </div>
-              </div>
-              <div class="alert alert-danger  fade in" id="alertemail">
-                <a href="#" id="alertemaildismiss" aria-label="close" class="close">×</a>
-                <strong>Email cannot be empty or</strong> need to have a valid format
-              </div>
-                    
-                  <div class="form-group">
-                        <label for="Question" class="control-label col-sm-2  ">Question:</label>
-                        <div class="col-sm-6">
-                        <textarea class="form-control" rows="2" id="Question" name="Question" placeholder="Post your questions here" required></textarea>
-                      </div>
-                  </div>
-                                <div class="alert alert-danger  fade in" id="alertquestion">
-                                  <a href="#" aria-label="close" id="alertquestiondismiss" class="close">×</a>
-                                  <strong>Question Field cannot be empty</strong>
-                                </div>
-            
-              <div class="form-group">        
-                <div class="col-sm-offset-7 col-xs-offset-9">
-                  <button type="button" class="btn btn-default btn-md" id="button" >Post</button>
-                </div>
-              </div>
-              <div class="form-group" >
-                    <label  for="Question" class="control-label col-sm-2 ">Contact Us:</label>
-                          <div class="col-sm-10">
-                          <a href="https://github.com/SanthoshBonala">
-                        <img src="images/Git.png" alt="santhosh" class="img-circle" width="90" height="30"></a>
-                        <a href="https://bitbucket.org/SanthoshBonala/">
-                                <img src="images/bit.png" alt="santhosh" class="img-circle" width="90" height="50"></a>
-                     </div>
-                 </div>
-       </form>      
+    <div class="col-sm-8 col-sm-offset-2">
+      <form class="form-horizontal" role="form" id="form" method="post">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="Name">Enter Name:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="Name" placeholder="Enter your  Name" name="Name" required>
+          </div>
+        </div>
+        <div class="alert alert-danger  fade in" id="alertname">
+          <a href="#" class="close " id="alertnamedismiss" class="close">×</a>
+          <strong>Name Field cannot be empty</strong>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="Email">Enter Email:</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control" id="Email" placeholder="Enter your Email" name="Email" required>
+          </div>
+        </div>
+        <div class="alert alert-danger  fade in" id="alertemail">
+          <a href="#" id="alertemaildismiss" aria-label="close" class="close">×</a>
+          <strong>Email cannot be empty or</strong> need to have a valid format
+        </div>
+
+        <div class="form-group">
+          <label for="Question" class="control-label col-sm-2  ">Question:</label>
+          <div class="col-sm-6">
+            <textarea class="form-control" rows="2" id="Question" name="Question" placeholder="Post your questions here"
+              required></textarea>
+          </div>
+        </div>
+        <div class="alert alert-danger  fade in" id="alertquestion">
+          <a href="#" aria-label="close" id="alertquestiondismiss" class="close">×</a>
+          <strong>Question Field cannot be empty</strong>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-7 col-xs-offset-9">
+            <button type="button" class="btn btn-default btn-md" id="button">Post</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Question" class="control-label col-sm-2 ">Contact Us:</label>
+          <div class="col-sm-10">
+            <a href="https://github.com/SanthoshBonala">
+              <img src="images/Git.png" alt="santhosh" class="img-circle" width="90" height="30"></a>
+            <a href="https://bitbucket.org/SanthoshBonala/">
+              <img src="images/bit.png" alt="santhosh" class="img-circle" width="90" height="50"></a>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
 </body>
+
 </html>
